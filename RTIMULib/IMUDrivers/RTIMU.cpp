@@ -307,8 +307,9 @@ void RTIMU::handleGyroBias()
 
 void RTIMU::calibrateAverageCompass()
 {
+	//save raw data of compass
+	m_compass_raw=m_imuData.compass;
     //  calibrate if required
-
     if (getCompassCalibrationValid()) {
         m_imuData.compass.setX((m_imuData.compass.x() - m_compassCalOffset[0]) * m_compassCalScale[0]);
         m_imuData.compass.setY((m_imuData.compass.y() - m_compassCalOffset[1]) * m_compassCalScale[1]);

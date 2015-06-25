@@ -114,6 +114,10 @@ public:
 
     const RTIMU_DATA& getIMUData() { return m_imuData; }
 
+    // getCompassRawData() always returns the raw data for the compass even if calibration is active
+
+    const RTVector3& getCompassRawData() { return m_compass_raw; }
+
     //  setExtIMUData allows data from some external IMU to be injected to the fusion algorithm
 
     void setExtIMUData(RTFLOAT gx, RTFLOAT gy, RTFLOAT gz, RTFLOAT ax, RTFLOAT ay, RTFLOAT az,
@@ -167,6 +171,7 @@ protected:
     bool m_accelCalibrationMode;                            // true if cal mode so don't use cal data!
 
     RTIMU_DATA m_imuData;                                   // the data from the IMU
+    RTVector3  m_compass_raw;								// compass raw data
 
     RTIMUSettings *m_settings;                              // the settings object pointer
 
